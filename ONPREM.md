@@ -4,6 +4,6 @@
 
 - 원본 범위·파일 해시: [SOURCE_PROVENANCE.json](SOURCE_PROVENANCE.json). 전달본은 일부 저장소의 부분 export입니다.
 - 포함된 Dockerfile은 로컬 검증에 사용한 digest 기반 레시피입니다. .env·실제 자격정보는 포함하지 않습니다.
-- 새 GitHub 주소를 Task Runtime이 사용하는 연결과 F/FL 검증은 아직 완료하지 않았습니다.
+- Baseline 0.19.1의 FedOps 의존성은 `fedops-core-onprem`의 `ff5f44ddea2705c8d901a54a0272f517822da8f4`에 고정했습니다. Web/Manager의 새 버전 허용·Baseline 배포 연결과 F/FL 검증은 별도입니다.
 - 기존 upstream 자동 게시 workflow는 실행하지 않도록 이관에서 제외했습니다.
 - 배포 설정: https://github.com/minsoojo/fedops-deployment

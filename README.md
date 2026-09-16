@@ -37,12 +37,21 @@ Runnable domain examples are kept separately in
 
 ## Verify
 
+On 2026-09-16, uv 0.8.13 installed 126 packages on Windows/Python 3.12.10.
+All 14 existing Baseline tests, installed Git revision verification, CPU TorchVision
+NMS, frozen sync, and dependency checks passed. Other locked package versions were
+preserved. See [verification evidence](verification/task-dependency.json).
+Linux/F execution and Web/Manager integration have not been verified by these checks.
+
 ### Optional server evaluation
 
-Baseline 0.19.0 uses FedOps 1.1.30.18 at immutable source revision
-`733f1696edc234073f0c1cd1a96e6580bfbcffeb`. Its lock and Web/Server profile must
-match this revision. Existing published Releases retain their original pins;
-never export this template over Baseline 0.18.0 or an older release.
+On-prem Baseline 0.19.1 uses FedOps 1.1.30.19+onprem.20260916 from
+`minsoojo/fedops-core-onprem` at immutable commit
+`ff5f44ddea2705c8d901a54a0272f517822da8f4`. Its lock and Web/Server profile must
+match this revision. Web/Manager acceptance and F Git authentication remain a
+separate integration step; this source change does not update running Tasks.
+Existing published Releases retain their original pins; never export this
+template over Baseline 0.19.0 or an older release.
 
 New config defaults to `server_evaluation.enabled: false` (client evaluation
 aggregation). Enable it only with real server validation data. Smoke loaders are
@@ -50,7 +59,7 @@ for code checks, never a substitute for global model quality evaluation.
 
 ```bash
 cd federated-task-baseline
-uv sync --frozen --link-mode copy
+uv tool run --from uv==0.8.13 uv sync --locked --link-mode copy
 cd ..
 federated-task-baseline/.venv/bin/python -m unittest discover -s tests
 federated-task-baseline/.venv/bin/python tools/build_release.py
@@ -58,7 +67,7 @@ federated-task-baseline/.venv/bin/python tools/build_release.py
 
 ## Release policy
 
-- Current release: `federated-task-baseline@0.19.0`
+- Current on-prem candidate: `federated-task-baseline@0.19.1`
 - Existing releases remain available through Git history and existing Web/S3 tasks.
 - A release is immutable. Changes require a new version.
 - Raw datasets, `.venv`, local artifacts, credentials, and readiness run details are

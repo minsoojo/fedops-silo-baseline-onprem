@@ -125,9 +125,9 @@ class BaselineContractTest(unittest.TestCase):
 
     def test_release_manifest_contains_only_workspace_files(self):
         manifest = build_manifest()
-        self.assertEqual(manifest["baseline"]["release_version"], "0.19.0")
+        self.assertEqual(manifest["baseline"]["release_version"], "0.19.1")
         self.assertEqual(manifest["compatibility"]["agent_studio_task_schema"], 3)
-        self.assertEqual(manifest["compatibility"]["fedops_participation"], "==1.1.30.18")
+        self.assertEqual(manifest["compatibility"]["fedops_participation"], "==1.1.30.19+onprem.20260916")
         paths = {entry["path"] for entry in manifest["files"]}
         by_path = {entry["path"]: entry for entry in manifest["files"]}
         self.assertIn("federated_task/task_readiness/check.py", paths)
